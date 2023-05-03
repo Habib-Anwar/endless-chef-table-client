@@ -11,6 +11,7 @@ import Home from './components/Home';
 import Blog from './components/Blog';
 import Login from './components/Login';
 import ChefTable from './components/ChefTable';
+import Register from './components/Register';
 
 
 const router = createBrowserRouter([
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
       {
         path: '/login',
         element: <Login></Login>,
+      },
+      {
+        path: '/register',
+        element: <Register></Register>
       }
     ]
   },
