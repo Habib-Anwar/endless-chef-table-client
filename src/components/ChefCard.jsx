@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Card, CardGroup, Col, Row } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const ChefCard = (props) => {
 
@@ -21,9 +22,9 @@ const ChefCard = (props) => {
       </Card.Body>
       <Card.Footer>
         <small>Likes: {likes}</small>
-        <Button variant="info" size="lg" active style={{marginLeft:"30px", color:'white'}}>
+       <Link to='/chefrecipes'> <Button variant="info" size="lg" active style={{marginLeft:"30px", color:'white'}}>
         View Recipes
-      </Button>
+      </Button></Link>
       </Card.Footer>
     </Card>
 </div>

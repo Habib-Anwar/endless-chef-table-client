@@ -14,6 +14,7 @@ import ChefTable from './components/ChefTable';
 import Register from './components/Register';
 import AuthProvider from './providers/AuthProvider';
 import ChefInfo from './components/ChefInfo';
+import ChefRecipes from './components/ChefRecipes';
 
 
 const router = createBrowserRouter([
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
       {
         path: '/register',
         element: <Register></Register>
+      },
+      {
+        path: '/chefrecipes',
+        element: <ChefRecipes></ChefRecipes>
       }
     ]
   },
