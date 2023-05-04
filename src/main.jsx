@@ -13,6 +13,7 @@ import Login from './components/Login';
 import ChefTable from './components/ChefTable';
 import Register from './components/Register';
 import AuthProvider from './providers/AuthProvider';
+import ChefInfo from './components/ChefInfo';
 
 
 const router = createBrowserRouter([
@@ -28,6 +29,11 @@ const router = createBrowserRouter([
         path: '/',
         element:<ChefTable></ChefTable>
       },
+      // {
+      //   path: '/chefinfo/:id',
+      //   element: <ChefInfo></ChefInfo>
+      //   loader: ({params}) => fetch('')
+      // },
       {
         path: '/blog',
         element: <Blog></Blog>,
