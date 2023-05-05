@@ -1,8 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { AuthContext } from '../providers/AuthProvider';
 
 const Register = () => {
+    const [error, setError] = useState('');
+    const [success, setSuccess] = useState('');
 
     const {createUser} = useContext(AuthContext)
 
@@ -14,11 +16,20 @@ const Register = () => {
         const photo = form.photo.value;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(name, photo, email, password);
+        // console.log(name, photo, email, password);
+        setError('');
+        setSuccess('');
+        if(password.length <6){
+            setError('password must be 6 characters or longer')
+            return
+        }
+
         createUser(email, password)
         .then(result => {
             const createdUser = result.user;
             console.log(createdUser);
+            form.reset();
+            setSuccess('Successfully Registerd')
         })
         .catch(error => {
             console.log(error);
@@ -26,8 +37,8 @@ const Register = () => {
     }
 
     return (
-        <div>
-            <h2>Please Register</h2>
+        <div className='container'>
+            <h2 className='text-center text-primary'>Please Register!!</h2>
             <Form className='w-50 mx-auto' onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formBasicName">
                     <Form.Label> User Name</Form.Label>
@@ -51,6 +62,8 @@ const Register = () => {
                 <Button variant="info" type="submit">
                     Register
                 </Button>
+                <p className='text-danger'><small>{error}</small></p>
+                <p className='text-success'>{success}</p>           
             </Form>
         </div>
     );

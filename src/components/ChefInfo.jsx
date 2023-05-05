@@ -6,7 +6,7 @@ const ChefInfo = () => {
   const [informations, setInformations] = useState([]);
 
   useEffect(() => {
-      fetch('http://localhost:5000/chef')
+      fetch('https://endless-chef-table-server-tauft-aolcom.vercel.app/chef')
       .then(res => res.json())
       .then(data => setInformations(data))
       .catch(error => console.error(error))

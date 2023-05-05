@@ -51,7 +51,7 @@ const router = createBrowserRouter([
       {
         path: '/chefrecipes/:id',
         element: <ChefRecipes></ChefRecipes>,
-        loader: ({params}) => fetch(`http://localhost:5000/recipe/${params.id}`)
+        loader: ({params}) => fetch(`https://endless-chef-table-server-tauft-aolcom.vercel.app/recipe/${params.id}`)
       },
       {
         path: '*',

@@ -6,7 +6,7 @@ const ChefRecipes = () => {
     const [recipes, setRecipes] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/recipe')
+        fetch('https://endless-chef-table-server-tauft-aolcom.vercel.app/recipe')
         .then(res => res.json())
         .then(data => setRecipes(data))
         .catch(error => console.error(error))

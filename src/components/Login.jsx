@@ -4,13 +4,14 @@ import { Button, Form } from 'react-bootstrap';
 import { FaGoogle, FaGithub } from 'react-icons/fa';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import app from '../firebase/firebase.config';
+import { AuthContext } from '../providers/AuthProvider';
 
 const auth = getAuth(app);
 const googleAuthProvider = new GoogleAuthProvider();
 
 const Login = () => {
 
-    // const {signIn} = useContext();
+    const {signIn} = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
     console.log(location);
@@ -27,6 +28,17 @@ const Login = () => {
         const email = form.email.value;
         const password = form.password.value;
         console.log(email, password);
+
+        signIn(email, password)
+        .then(result =>{
+            const createdUser = result.user;
+            console.log(createdUser);
+            form.reset();
+            navigate(from, {replace: true});
+        })
+        .catch(error =>{
+            console.log(error);
+        })
 
 
             //validation
@@ -47,16 +59,7 @@ const Login = () => {
             }
 
     
-        signIn(auth, email, password)
-        .then(result =>{
-            const loggedUser = result.user;
-            console.log(loggedUser);
-            form.reset();
-            navigate(from, {replace: true});
-        })
-        .catch(error =>{
-            console.log(error);
-        })
+        
     }
 
     const signInWithGoogle = () =>{
@@ -80,11 +83,11 @@ const Login = () => {
             <Form className='w-50 mx-auto' onSubmit={handleLogin}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
-                    <Form.Control type="email" placeholder="Enter email" />
+                    <Form.Control type="email"  name="email" placeholder="Enter email" required />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" placeholder="Password" />
+                    <Form.Control type="password" name="password" placeholder="Password" required/>
                 </Form.Group>
                 <Button variant="primary" type="submit">
                     Login
