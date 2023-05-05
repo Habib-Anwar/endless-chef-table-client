@@ -15,6 +15,7 @@ import Register from './components/Register';
 import AuthProvider from './providers/AuthProvider';
 import ChefInfo from './components/ChefInfo';
 import ChefRecipes from './components/ChefRecipes';
+import NotFound from './components/NotFound';
 
 
 const router = createBrowserRouter([
@@ -48,8 +49,13 @@ const router = createBrowserRouter([
         element: <Register></Register>
       },
       {
-        path: '/chefrecipes',
-        element: <ChefRecipes></ChefRecipes>
+        path: '/chefrecipes/:id',
+        element: <ChefRecipes></ChefRecipes>,
+        loader: ({params}) => fetch(`http://localhost:5000/recipe/${params.id}`)
+      },
+      {
+        path: '*',
+        element: <NotFound></NotFound>
       }
     ]
   },

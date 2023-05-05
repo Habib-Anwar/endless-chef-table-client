@@ -22,7 +22,7 @@ const ChefCard = (props) => {
       </Card.Body>
       <Card.Footer>
         <small>Likes: {likes}</small>
-       <Link to='/chefrecipes'> <Button variant="info" size="lg" active style={{marginLeft:"30px", color:'white'}}>
+       <Link to='/chefrecipes/:id'> <Button variant="info" size="lg" active style={{marginLeft:"30px", color:'white'}}>
         View Recipes
       </Button></Link>
       </Card.Footer>
